@@ -4,11 +4,27 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - name: get code
-      uses: actions/checkout@v5
-    - name: Install nodes
-      uses: actions/setup-node@v6
-      with:
+     - name: get code
+       uses: actions/checkout@v5
+     - name: Install nodes
+       uses: actions/setup-node@v6
+       with:
         node-version: 18
-    - name: install dependencies
-      uses: npm ci
+     - name: install dependencies
+       run: npm ci
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+     - name: get code
+       uses: actions/checkout@v5
+     - name: Install nodes
+       uses: actions/setup-node@v5
+       with:
+        node-version: 18
+     - name: install dependencies
+       run: npm ci
+     - name: build project
+       run: npm run build
+     - name: deploying
+       run: echo "deploying"

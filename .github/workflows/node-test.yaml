@@ -1,0 +1,14 @@
+name: node application deployemnt yaml file
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: get code
+      uses: actions/checkout@v5
+    - name: Install nodes
+      uses: actions/setup-node@v6
+      with:
+        node-version: 18
+    - name: install dependencies
+      uses: npm ci
